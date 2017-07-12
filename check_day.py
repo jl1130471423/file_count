@@ -41,6 +41,7 @@ def file_find():
 def work():
 	# 连接数据库
 	connect = pymysql.connect(
+		host='192.168.3.66',
 		port=3306,
 		user='test',
 		passwd='test',
@@ -150,6 +151,7 @@ def work():
 					update_time2 = time.strftime('%Y-%m-%d %H:%M:%S',mtime)
 					print ("The file updatetime is: %s" %update_time2)
 					update_time_cut2 = datetime.datetime.fromtimestamp(time.mktime(time.strptime(update_time2,"%Y-%m-%d %H:%M:%S")))
+					cut_date2 = (abs(now-update_time_cut2)).seconds/60
 					#插入数据
 					cur.execute("insert ignore into day_check(id,Hostname,IP,path,file_update_date,create_date,cut_date) values(null,%s,%s,%s,%s,now(),%s)",(myname,myaddr,my_dir2,update_time2,cut_date2))
 					d = d + 1
