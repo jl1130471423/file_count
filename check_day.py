@@ -41,7 +41,6 @@ def file_find():
 def work():
 	# 连接数据库
 	connect = pymysql.connect(
-		host='10.49.128.1',
 		port=3306,
 		user='test',
 		passwd='test',
